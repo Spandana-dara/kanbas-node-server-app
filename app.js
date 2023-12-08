@@ -16,8 +16,8 @@ mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(cors({
     credentials: true,
-    // origin: process.env.FRONTEND_URL
-    origin : 'https://a6--ubiquitous-tulumba-67eee0.netlify.app'
+    // // origin: process.env.FRONTEND_URL
+    // origin : 'https://a6--ubiquitous-tulumba-67eee0.netlify.app'
 }
 ));
 const sessionOptions = {
