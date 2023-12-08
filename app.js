@@ -16,8 +16,7 @@ mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(cors({
     credentials: true,
-    // // origin: process.env.FRONTEND_URL
-    // origin : 'https://a6--ubiquitous-tulumba-67eee0.netlify.app'
+    origin: process.env.FRONTEND_URL
 }
 ));
 const sessionOptions = {
@@ -41,6 +40,13 @@ Lab5(app)
 CourseRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 app.listen(process.env.PORT || 4000);
 
 
